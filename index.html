@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex's Asistment </title>
+    <title>Modern Treaty or Land Claim Poster</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1> Modern Treaty or Land Claim Poster</h1>
+        <h1>Modern Treaty or Land Claim Poster</h1>
         <p>Alex Khalus / INDG - Q4</p>
     </header>
     <main>
@@ -23,7 +23,7 @@
         <div class="element teams">What did each side give up?</div>
         <div class="detail teams-detail">The Indigenous peoples gave up full control over all their 
             traditional territories and accepted some limitations. The government gave up the idea of
-             proceeding with development without consulting Indigenous communities.</div>
+            proceeding with development without consulting Indigenous communities.</div>
 
         <div class="element project-timeline">What did each side gain?</div>
         <div class="detail project-timeline-detail">Indigenous groups gained financial compensation (over $200 million), guarantees of rights to hunt, fish, govern themselves, and access better education and healthcare. The government gained permission to carry out major hydroelectric projects, especially the James Bay Project.</div>
@@ -31,7 +31,7 @@
         <div class="element resources">Which Indigenous group(s) signed the modern treaty or land claim?</div>
         <div class="detail resources-detail">The Cree and Inuit of Northern Quebec.</div>
 
-        <div class="element deliverables">When did negotiations take place? </div>
+        <div class="element deliverables">When did negotiations take place?</div>
         <div class="detail deliverables-detail">From <strong>1973</strong> to <strong>1975</strong>.</div>
 
         <div class="element goals">When was the treaty or land claim signed?</div>
@@ -51,34 +51,33 @@
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const projectName = document.querySelector('.project-name');
             const elements = document.querySelectorAll('.element');
             const details = document.querySelectorAll('.detail');
 
-            // Initially hide all elements except project-name
+            // Hide all on load
             elements.forEach(el => el.style.display = 'none');
             details.forEach(detail => detail.style.display = 'none');
 
-            // Add click event to project-name
-            projectName.addEventListener('click', function() {
+            // Show elements on project-name click
+            projectName.addEventListener('click', function () {
                 elements.forEach(el => {
                     el.style.display = 'flex';
-                    el.style.opacity = 0;
-                    setTimeout(() => el.style.opacity = 1, 100);
+                    setTimeout(() => el.classList.add('show'), 50); // Delay to trigger transition
                 });
             });
 
-            // Add click event to each element to show its detail
+            // Show/hide detail on element click
             elements.forEach(el => {
-                el.addEventListener('click', function() {
+                el.addEventListener('click', function () {
                     const detail = document.querySelector(`.${el.classList[1]}-detail`);
                     if (detail.style.display === 'none') {
                         detail.style.display = 'block';
-                        detail.style.opacity = 0;
-                        setTimeout(() => detail.style.opacity = 1, 100);
+                        setTimeout(() => detail.classList.add('show'), 50);
                     } else {
-                        detail.style.display = 'none';
+                        detail.classList.remove('show');
+                        setTimeout(() => detail.style.display = 'none', 500);
                     }
                 });
             });
