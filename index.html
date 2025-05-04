@@ -62,9 +62,11 @@
 
             // Show elements on project-name click
             projectName.addEventListener('click', function () {
-                elements.forEach(el => {
-                    el.style.display = 'flex';
-                    setTimeout(() => el.classList.add('show'), 50); // Delay to trigger transition
+                elements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.display = 'flex';
+                        setTimeout(() => el.classList.add('show'), 50); // Delay to trigger transition
+                    }, index * 500); // Delay each element by 500ms
                 });
             });
 
